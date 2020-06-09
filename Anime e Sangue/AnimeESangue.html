@@ -1,0 +1,457 @@
+<div class='2colrow'>
+    <div class='col'>
+    	<label>Spirito: </label><input type="text" name="attr_character_name" />	
+	</div>
+    <div class='col'>	
+		<label>Livello: </label><input type="number" name="attr_level"  value="1"/>
+	</div>
+</div>
+
+    <div class="col">
+		<label>Natura: </label><input type="text" name="attr_nature" />
+	</div>	
+    <div class="col">		
+		<label>Inclinazione: </label><input type="text" name="attr_inclin" />
+	</div>
+	</div>
+<div class="1colrow">
+	<div class="1colrow">
+		<label>Passato e Scopo: </label><input type="text" name="attr_bg" size="200" style="width:60%"/>
+	</div>
+	<div class="1colrow">
+		<label>Arma: </label><input type="text" name="attr_arma" size="200"/>
+	</div>	
+	<div class="1colrow">
+		<label>Corpo: </label><input type="text" name="attr_corpo" size="100"/>
+  <select name="attr_corpotype" class="ctype"> 
+    <option value="C">Comune</option>
+    <option value="E">Eroico</option>
+    <option value="L">Leggendario</option>
+  </select>
+	</div>
+
+
+
+
+<hr/>
+<table width="800" border ="1">
+<thead>
+<th>Qualita'</th>
+<th>Spirito</th>
+<th>Corpo</th>
+<th>Totale</th>
+<th colspan="2">+</th>
+<th>Dadi Da Usare</th>
+<th>Roll</th>
+</thead>
+<tbody>
+<tr>
+<td><label>Violenza (VI)</label></td>
+<td><input type="number" name='attr_viS' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_viC' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_viTotPar' class='sheet-short' value="@{viS} + @{viC}" disabled="true"></td>
+<td><input type="number" name='attr_vi+' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_vitot' class='sheet-short'value="@{viTotPar} + @{vi+}" disabled="true"></td>
+<td><input type="number" name='attr_vidadi' class='sheet-short' value="0"></td>
+<td><button type='roll' name='roll_testmov' value='&{template:default} {{name=@{character_name} - Violenza}} {{result=[[@{vidadi}d20mskh1 + @{vitot}]]}}'></button><span class='dee'></span><br /></td>
+</tr>
+
+<tr>
+<td><label>Movimento (MO)</label></td>
+<td><input type="number" name='attr_moS' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_moC' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_moTotPar' class='sheet-short' value="@{moS} + @{moC}" disabled="true"></td>
+<td><input type="number" name='attr_mo+' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_motot' class='sheet-short'value="@{moTotPar} + @{mo+}" disabled="true"></td>
+<td><input type="number" name='attr_modadi' class='sheet-short' value="0"></td>
+<td><button type='roll' name='roll_testmov' value='&{template:default} {{name=@{character_name} - Movimento}} {{result=[[@{modadi}d20mskh1 + @{motot}]]}}'></button><span class='dee'></span><br /></td>
+</tr>
+
+<tr>
+<td><label>Interazione (IN)</label></td>
+<td><input type="number" name='attr_inS' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_inC' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_inTotPar' class='sheet-short' value="@{inS} + @{inC}" disabled="true"></td>
+<td><input type="number" name='attr_in+' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_intot' class='sheet-short'value="@{inTotPar} + @{in+}" disabled="true"></td>
+<td><input type="number" name='attr_indadi' class='sheet-short' value="0"></td>
+<td><button type='roll' name='roll_testint' value='&{template:default} {{name=@{character_name} - Interazione}} {{result=[[@{indadi}d20mskh1 + @{intot}]]}}'></button><span class='dee'></span><br /></td>
+</tr>
+
+<tr>
+<td><label>Magia (MA)</label></td>
+<td><input type="number" name='attr_maS' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_maC' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_maTotPar' class='sheet-short' value="@{maS} + @{maC}" disabled="true"></td>
+<td><input type="number" name='attr_ma+' class='sheet-short' value="0"></td>
+<td><input type="number" name='attr_matot' class='sheet-short'value="@{maTotPar} + @{ma+}" disabled="true"></td>
+<td><input type="number" name='attr_madadi' class='sheet-short' value="0"></td>
+<td><button type='roll' name='roll_testint' value='&{template:default} {{name=@{character_name} - Magia}} {{result=[[@{madadi}d20mskh1 + @{matot}]]}}'></button><span class='dee'></span><br /></td>
+</tr>
+</tbody>
+</table>
+<HR width="400" size="1" color="white" align="center">
+<div class='2colrow'>
+<div class='col'>
+<label>Dadi Azione</label>
+  <select name="attr_dazio" class="dtype"style="width:30%"> 
+    <option value="1D">1 Dado</option>
+    <option value="2D">2 Dadi</option>
+    <option value="3D">3 Dadi</option>
+    <option value="4D">4 Dadi</option>
+    <option value="5D">5 Dadi</option>
+    <option value="6D">6 Dadi</option>
+    <option value="7D">7 Dadi</option>
+    <option value="8D">8 Dadi</option>
+  </select>
+</div>
+<div class='col'>
+<label>Dadi Bonus</label>
+  <select name="attr_dbonus" class="dtypeb"style="width:30%"> 
+    <option value="0DB">0 Dadi Bonus</option>
+    <option value="1DB">1 Dado Bonus</option>
+    <option value="2DB">2 Dadi Bonus</option>
+    <option value="3DB">3 Dadi Bonus</option>
+    <option value="4DB">4 Dadi Bonus</option>
+  </select>
+</div>
+</div>  
+<HR width="400" size="1" color="white" align="center">  
+<div class='3colrow'>
+<div class='col'>
+<label>Valore</label> <input type="number" name='attr_valore' class='sheet-short'value="{15 + @{viTotPar} + @{moTotPar} + @{inTotPar}}" disabled="true">
+</div>
+<div class='col'>
+<label>Malus Val</label> <input type="number" name='attr_malus' class='sheet-short' value="0">
+</div>
+<div class='col'>
+<label>Valore Attuale</label> <input type="number" name='attr_act_val' class='sheet-short' value="@{valore}">
+</div>
+</div>
+<div class='3colrow'>
+<div class='col'>
+<label>Punti Magia</label> <input type="number" name='attr_pm' class='sheet-short'value="{@{maTotPar} + @{maTotPar}}" disabled="true">
+</div>
+<div class='col'>
+<label>PM Attuali</label> <input type="number" name='attr_act_pm' class='sheet-short' value="@{pm}">
+</div>
+<div class='col'>
+<label>Eroismo</label> <input type="number" name='attr_hero' class='sheet-short' value="0">
+</div>
+</div>
+<HR width="400" size="1" color="white" align="center">
+<div class='2colrow'>
+<div class='col'>
+<table width="380" border ="1" style="width:100%">
+<thead>
+<th style="text-align:center">Capacita'</th>
+<th style="text-align:center">Colore</th>
+<th style="text-align:center">N min</th>
+</thead>
+<tr>
+  <td style="width:60%"><input type="text" name="attr_cap1" style="width:90%"/></td>
+  <td style="width:30%"><select name="attr_dcap1" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td style="width:10%"><input type="number" name="attr_Nminc1" value="0"/><td>
+</tr>
+<tr>
+  <td><input type="text" name="attr_cap2" style="width:90%"/></td>
+  <td><select name="attr_dcap2" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td><input type="number" name="attr_Nminc2" value="0"/><td>
+</tr>
+<tr>
+  <td><input type="text" name="attr_cap3" style="width:90%"/></td>
+  <td><select name="attr_dcap3" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td><input type="number" name="attr_Nminc3" value="0"/><td>
+</tr>
+<tr>
+  <td><input type="text" name="attr_cap4" style="width:90%"/></td>
+  <td><select name="attr_dcap4" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td><input type="number" name="attr_Nminc4" value="0"/><td>
+</tr>
+<tr>
+  <td><input type="text" name="attr_cap5" style="width:90%"/></td>
+  <td><select name="attr_dcap5" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td><input type="number" name="attr_Nminc5" value="0"/><td>
+</tr>
+<tr>
+  <td><input type="text" name="attr_cap6" style="width:90%"/></td>
+  <td><select name="attr_dcap6" class="dcap"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+  </select></td>
+  <td><input type="number" name="attr_Nminc6" value="0"/><td>
+</tr>
+</table>
+</div>
+<div class='col'>
+<div>
+<label style="text-align:center"> Dadi Armatura Fisica</label>
+  <select name="attr_darmf" class="darmf"> 
+    <option value="0DA">0 Dadi Arm Fis</option>
+    <option value="1DA">1 Dado Arm Fis</option>
+    <option value="2DA">2 Dadi Arm Fis</option>
+    <option value="3DA">3 Dadi Arm Fis</option>
+  </select>
+</div>
+<div>
+<label style="text-align:center"> Dadi Armatura Magica</label>
+  <select name="attr_darmm" class="darmm"> 
+    <option value="0DM">0 Dadi Arm Mag</option>
+    <option value="1DM">1 Dado Arm Mag</option>
+    <option value="2DM">2 Dadi Arm Mag</option>
+    <option value="3DM">3 Dadi Arm Mag</option>
+  </select>
+</div>
+</div>
+</div>
+
+<HR width="400" size="1" color="white" align="center">
+<div class='3colrow'>
+<div class='col'>
+<table width="500" border ="1">
+<thead>
+<th colspan="8" style="text-align:center">Equipaggiamento e Ricchezze</th>
+</thead>
+<tr>
+<td colspan="4"><input type="text" name="attr_eq1" style="width:90%"/></td>
+<td colspan="4"><input type="text" name="attr_eq5" style="width:90%"/></td>
+</tr>
+<tr>
+<td colspan="4"><input type="text" name="attr_eq2" style="width:90%"/></td>
+<td colspan="4"><input type="text" name="attr_eq6" style="width:90%"/></td>
+</tr>
+<tr>
+<td colspan="4"><input type="text" name="attr_eq3" style="width:90%"/></td>
+<td colspan="4"><input type="text" name="attr_eq7" style="width:90%"/></td>
+</tr>
+<tr>
+<td colspan="4"><input type="text" name="attr_eq4" style="width:90%"/></td>
+<td colspan="4"><input type="text" name="attr_eq8" style="width:90%"/></td>
+</tr>
+<tr>
+<td>Una Miseria</td>
+<td><input type="number" name="attr_miseria"/></td>
+<td>Un po' di soldi</td>
+<td><input type="number" name="attr_unpo"/></td>
+<td>Un piccolo tesoro</td>
+<td><input type="number" name="attr_pictes"/></td>
+<td>Una Ricchezza</td>
+<td><input type="number" name="attr_ricchezza"/></td>
+</tr>
+<tr style="background-color:#FF0000">
+<td colspan="2">Errore</td>
+<td colspan="1"><input type="number" name="attr_numerr" value="0"/></td>
+<td colspan="5"><input type="text" name="attr_err"size="200" style="width:90%"/></td>
+</tr>
+</table>
+<HR width="400" size="1" color="white" align="center">
+</div>
+<div class='col'></div>
+<div class='col'>
+<table border ="1" style="width:100%">
+<thead>
+<th colspan="4" style="text-align:center">Anime</th>
+</thead>
+<tr>
+	<td>L.A. 1</td>
+	<td><input type="number" name="attr_LA1" value="0"/></td>
+	<td>L.A. 6</td>
+	<td><input type="number" name="attr_LA6" value="0"/></td>
+</tr>
+<tr>
+	<td>L.A. 2</td>
+	<td><input type="number" name="attr_LA2" value="0"/></td>
+	<td>L.A. 7</td>
+	<td><input type="number" name="attr_LA7" value="0"/></td>
+</tr>
+<tr>
+	<td>L.A. 3</td>
+	<td><input type="number" name="attr_LA3" value="0"/></td>
+	<td>L.A. 8</td>
+	<td><input type="number" name="attr_LA8" value="0"/></td>
+</tr>
+<tr>
+	<td>L.A. 4</td>
+	<td><input type="number" name="attr_LA4" value="0"/></td>
+	<td>L.A. 9</td>
+	<td><input type="number" name="attr_LA9" value="0"/></td>
+</tr>
+<tr>
+	<td>L.A. 5</td>
+	<td><input type="number" name="attr_LA5" value="0"/></td>
+	<td>L.A. 10</td>
+	<td><input type="number" name="attr_LA10" value="0"/></td>
+</tr>
+</table>
+</div>
+</div>
+<table border ="1" style="width:100%">
+<tr>
+<td style="width:20%">Colore Primario</td> 
+<td style="width:15%">
+<select name="attr_dcol1" class="dcol"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+    <option value="verde">Caos</option>
+  </select>
+  </td> 
+<td style="width:8%">N.Min</td> 
+<td style="width:7%"><input type="number" name="attr_NMC1" value="0"/></td> 
+<td style="width:20%">Colore Secondario</td> 
+<td style="width:15%">
+<select name="attr_dcol2" class="dcol"> 
+    <option value="acciaio"></option>
+    <option value="acciaio">Acciaio</option>
+    <option value="rosso">Rosso</option>
+    <option value="giallo">Giallo</option>
+    <option value="nero">Nero</option>
+    <option value="blu">Blu</option>
+    <option value="bianco">Bianco</option>
+    <option value="verde">Verde</option>
+    <option value="verde">Caos</option>
+  </select>
+</td> 
+<td style="width:8%">N.Min</td> 
+<td style="width:7%"><input type="number" name="attr_NMC2" value="0"/></td> 
+</tr>
+<tr>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag1" style="width:90%"/></td>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag2" style="width:90%"/></td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag3" style="width:90%"/></td>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag4" style="width:90%"/></td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag5" style="width:90%"/></td>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag6" style="width:90%"/></td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag7" style="width:90%"/></td>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag8" style="width:90%"/></td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag9" style="width:90%"/></td>
+<td style="width:100%" colspan="4"><input type="text" name="attr_mag10" style="width:90%"/></td>
+</tr>
+</table>
+<HR width="400" size="1" color="white" align="center">
+<table border ="1" style="width:100%">
+<tr>
+	<td style="width:30%">Incantesimo Attivo</td>
+	<td style="width:10%">Risultato</td>
+	<td style="width:20%">Lanciato Da</td>
+	<td style="width:40%">Effetti e note</td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_inc1_nome" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc1_ris" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc1_da" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc1_eff" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_inc2_nome" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc2_ris" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc2_da" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc2_eff" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_inc3_nome" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc3_ris" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc3_da" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc3_eff" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_inc4_nome" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc4_ris" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc4_da" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc4_eff" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_inc5_nome" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc5_ris" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc5_da" style="width:90%"/></td>
+	<td><input type="text" name="attr_inc5_eff" style="width:90%"/></td>
+</tr>
+</table>
+<HR width="400" size="1" color="white" align="center">
+<table border ="1" style="width:100%">
+<tr>
+<td>Note Aggiuntive, Caratteristiche Evocati e Altro</td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro1" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro2" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro3" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro4" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro5" style="width:90%"/></td>
+</tr>
+<tr>
+	<td><input type="text" name="attr_altro6" style="width:90%"/></td>
+</tr>
+</table>
